@@ -1,6 +1,3 @@
-
-# This is a test edit for gitHub
-
 # import python libraries
 import math
 import os
