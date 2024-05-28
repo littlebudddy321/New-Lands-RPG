@@ -29,20 +29,15 @@ IIRON = 0
 IGOLD = 0
 ICOPPER = 0
 IFISH = 0
+ICOINS = 0
 
 # bank
-BWOOD = 0
-BSTONE = 0
-BIRON = 0
-BGOLD = 0
-BCOPPER = 0
-BFISH = 0
+BCOINS = 0
 
 # Xp system
 Xp = 0
 Level = 1
 XpLEFT = 100
-
 
 print("========================================")
 print("Type 'help' for help")
@@ -260,7 +255,7 @@ while True:  # start of game
             print("Inventory:")
             print("----------------------------------------")
             print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD, "\nCopper", ICOPPER, "\nFish",
-                  IFISH)
+                  IFISH, "\nCoins", ICOINS)
             print("----------------------------------------")
 
         case "help":  # prints list of available commands
@@ -383,71 +378,46 @@ while True:  # start of game
                                 print("you enter the bank")
                                 while True:
                                     print("========================================")
-                                    print("what would you like to store into the bank")
-                                    USER = input("Choose item:").lower()
+                                    print("Deposite or withdrawl  coins?")
+                                    USER = input("Choose action: ").lower()
                                     match USER:
-                                        case "wood":
-                                            if IWOOD >= 1:
-                                                print("You stored all your wood")
-                                                IWOOD -= IWOOD
-                                            else:
-                                                print("You have no more wood to store")
+                                        case "deposite":
+                                            try:
+                                                USER = int(input("Deposite ammount:"))
+                                                if USER >= 0:
+                                                    if USER <= ICOINS:
+                                                        BCOINS += USER
+                                                        ICOINS -= USER
+                                                        print("You deposited", USER)
+                                                    else:
+                                                        print("come back when your a little... hmmm, richer...")
+                                                else:
+                                                    print("select 'withdrawl' to take out money")
+                                            except ValueError:
+                                                print("This is not a number try again")
 
-                                        case "stone":
-                                            if ISTONE >= 1:
-                                                print("You stored all your stone")
-                                                ISTONE -= ISTONE
-                                            else:
-                                                print("You have no more stone to store")
-
-                                        case "iron":
-                                            if IIRON >= 1:
-                                                print("You stored all your iron")
-                                                IIRON -= IIRON
-                                            else:
-                                                print("You have no more iron to store")
-
-                                        case "gold":
-                                            if IGOLD >= 1:
-                                                print("You stored all your gold")
-                                                IGOLD -= IGOLD
-                                            else:
-                                                print("You have no more gold to store")
-
-                                        case "copper":
-                                            if ICOPPER >= 1:
-                                                print("You stored all your copper")
-                                                ICOPPER -= ICOPPER
-                                            else:
-                                                print("You have no more copper to store")
-
-                                        case "fish":
-                                            if IFISH >= 1:
-                                                print("You stored all your fish")
-                                                IFISH -= IFISH
-                                            else:
-                                                print("You have no more fish to store")
-
-                                        case "help":
-                                            print(
-                                                "actions list:\n- bag: Shows list of items in your bag\n-leave: Type "
-                                                "this command to leave the bank\nYou just have to type the "
-                                                "name of the item you want to store to store it.")
-
-                                        case "bag":  # check inventory
-                                            print("========================================")
-                                            print("Inventory")
-                                            print("----------------------------------------")
-                                            print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD,
-                                                  "\nCopper", ICOPPER, "\nFish", IFISH)
-                                            print("----------------------------------------")
-
+                                        case "withdrawl":
+                                            try:
+                                                USER = int(input("Withdrawl ammount:"))
+                                                if USER >= 0:
+                                                    if USER <= BCOINS:
+                                                        BCOINS -= USER
+                                                        ICOINS += USER
+                                                        print("you withdrew $", USER)
+                                                    else:
+                                                        print("come back when your a little... hmmm, richer...")
+                                                else:
+                                                    print("select 'Deposite' to deposite money")
+                                            except ValueError:
+                                                print("This is not a number try again")
+                                        case "coins":
+                                            print("coins:", ICOINS)
                                         case "leave":
-                                            print("you leave the bank")
                                             break
 
                                         case _:
-                                            print("Invalid input")
+                                            print("Invalid Input")
+
 
                             case "general store":  # GENERAL STORE CODE
                                 print("you enter the General store")
