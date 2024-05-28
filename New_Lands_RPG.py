@@ -266,7 +266,7 @@ while True:  # start of game
         case "help":  # prints list of available commands
             print("========================================")
             print("actions list:")
-            print("scan, travel, mine, bag, level")
+            print("scan, travel, mine, bag, level, town")
 
         case "level":  # check level
             print("Total Xp earned", Xp)
