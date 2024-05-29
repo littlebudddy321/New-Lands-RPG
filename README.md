@@ -1,10 +1,11 @@
 # New-Lands-RPG-
-This is a python texted based resource collection/adventure/PVE game, The first game i have ever made. there are lots of things i want to add but dont know when i will add or even finish them. 
+This is a text-based resource collection/adventure/PVE game coded in Python. This is the first game I have ever made, there are lots of things I want to add but don't know when I will add or even finish them. 
+
+Feel Free to leave any issues or ideas you might have!
 
 
-Features/bugs that need to be added/fixed:
-- Make it so items thar are sold give something in return.
-- Make selling items quicker/large quanity
-- make bank only hold Coins
-
-- Make story. Why are you there, what are you doing?
+Planned Features:
+- Make it so items that are sold give something in return.
+- Make selling items quicker or in larger quantities
+- make bank only hold Coins - COMPLETED
+- Make a story. Why are you there, what are you doing?
