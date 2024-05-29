@@ -421,58 +421,75 @@ while True:  # start of game
 
                             case "general store":  # GENERAL STORE CODE
                                 print("you enter the General store")
-
+                                print("========================================")
+                                print("choosing an item will sell all of that \nin your inventory\nType 'help' for help")
+                                print("========================================")
                                 while True:
-                                    print("========================================")
                                     USER = input("what items would you like to sell?\nchoose item:")
                                     match USER:
-                                        case "wood":
-                                            if IWOOD >= 1:
-                                                print("sold #1 wood")
-                                                IWOOD -= 1
-                                            else:
-                                                print("you have no more wood to sell")
 
-                                        case "stone":
-                                            if ISTONE >= 1:
-                                                print("sold #1 stone")
-                                                ISTONE -= 1
-                                            else:
-                                                print("you have no more stone to sell")
+                                        case "sell bag":
+                                            print("10 second wait:")
+                                            time.sleep(10)
+                                            print("you sell you entire bag (except fish)")
+                                            ICOINS += IWOOD
+                                            ICOINS += ISTONE
+                                            ICOINS += IIRON
+                                            ICOINS += IGOLD
+                                            ICOIND += ICOPPER
+                                            IWOOD -= IWOOD
+                                            ISTONE -= ISTONE
+                                            IIRON -= IIRON
+                                            IGOLD -= IGOLD
+                                            ICOPPER -= ICOPPER
+                                            IFISH -= IFISH
+                                            ICOINS -= ICOINS
 
-                                        case "iron":
-                                            if IIRON >= 1:
-                                                print("sold #1 iron")
-                                                IIRON -= 1
-                                            else:
-                                                print("you have no more iron to sell")
+                                        case "Wood":
+                                            print("You sold all your wood")
+                                            print("Amount sold:", IWOOD)                                            
+                                            print("Pat amount:", IWOOD)
+                                            ICOINS += IWOOD
+                                            IWOOD -= IWOOD
 
-                                        case "gold":
-                                            if IGOLD >= 1:
-                                                print("sold #1 gold")
-                                                IGOLD -= 1
-                                            else:
-                                                print("you have no more gold to sell")
 
-                                        case "copper":
-                                            if ICOPPER >= 1:
-                                                print("sold #1 copper")
-                                                ICOPPER -= 1
-                                            else:
-                                                print("you have no more copper to sell")
+                                        case "Stone":
+                                            print("You sold all your wood")
+                                            print("Amount sold:", ISTONE) 
+                                            print("Pay amount:", ISTONE)                                           
+                                            ICOINS += ISTONE
+                                            ISTONE -= ISTONE
+
+                                        
+                                        case "Iron":
+                                            print("You sold all your iron")
+                                            print("Amount sold:", IIRON)
+                                            print("Pay amount:", IIRON)
+                                            ICOINS += IIRON
+                                            IIRON -= IIRON
+                                        
+                                        case "Gold":
+                                            print("You sold all your gold")
+                                            print("Amount sold:", IGOLD)
+                                            print("Pay amount:", IGOLD)
+
+                                        case "Copper":
+                                            print("You sold all your gold")
+                                            print("Amount sold", ICOPPER)
+                                            print("Pay ammount:", ICOPPER)
 
                                         case "fish":
-                                            if IFISH >= 1:
-                                                print("sold #1 fish")
-                                                IFISH -= 1
-                                            else:
-                                                print("you have no more fish to sell")
+                                            print("you cannot sell fish.\nPlease choose another item")
+
 
                                         case "help":
-                                            print(
-                                                "actions list:\n- bag: Shows list of items in your bag\n-leave: Type "
-                                                "this command to leave the general store\nYou just have to type the "
-                                                "name of the item you want to sell to sell it.")
+                                            print("========================================")
+                                            print("Actions list:")
+                                            print("'bag' - opens bag to view current held items")
+                                            print("'sell bag' - Sells entire bag")
+                                            print("'leave' - leaves general store")
+                                            print("Type almost any items name to sell")
+                                            print("----------------------------------------")
 
                                         case "bag":  # check inventory
                                             print("========================================")
