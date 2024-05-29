@@ -1,7 +1,7 @@
 # New-Lands-RPG-
 This is a text-based resource collection/adventure/PVE game coded in Python. This is the first game I have ever made, there are lots of things I want to add but don't know when I will add or even finish them. 
 
-Feel Free to leave any issues or ideas you might have!
+Feel free to leave any issues or ideas you might have!
 
 
 Planned Features:
