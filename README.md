@@ -6,7 +6,7 @@ Feel free to leave any issues or ideas you might have!
 
 Planned Features:
 - Make it so items that are sold give something in return. - COMPLETE
-- Make selling items quicker or in larger quantities - mCOMPLETE
+- Make selling items quicker or in larger quantities - COMPLETE
 - make bank only hold Coins - COMPLETED
 - Make a story. Why are you there, what are you doing?
 - Make fish cookable
