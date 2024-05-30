@@ -536,6 +536,3 @@ while True:  # start of game
 
         case "quit":
             print("quit")
-
-
-print("hello world")
