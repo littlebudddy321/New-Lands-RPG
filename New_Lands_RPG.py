@@ -29,6 +29,7 @@ IIRON = 0
 IGOLD = 0
 ICOPPER = 0
 IFISH = 0
+ICOOKEDFISH = 0
 ICOINS = 0
 
 # bank
@@ -261,7 +262,7 @@ while True:  # start of game
         case "help":  # prints list of available commands
             print("========================================")
             print("actions list:")
-            print("scan, travel, mine, bag, level, town")
+            print("scan, travel, mine, bag, level, town, cook")
 
         case "level":  # check level
             print("Total Xp earned", Xp)
@@ -278,7 +279,6 @@ while True:  # start of game
             print("7-15 seconds until you arrive at new area")
             time.sleep(TRAVELTIME)
             RANDOM = random.randint(0, 1)
-
             if RANDOM == 1:
                 print("a bandit jumped in your path")
                 while True:
@@ -357,6 +357,75 @@ while True:  # start of game
                 Gold = random.randint(0, 1)
                 Copper = random.randint(0, 10)
                 Fish = random.randint(0, 10)
+       
+        case "cook":
+            while True:
+                if IFISH >= 1:
+                    USER = input("would you like to cook your fish?\nY or N: ")
+                    match USER:
+                        case "y":
+                            print("You cook your fish")
+                            time.sleep(1)
+                            print("5")
+                            time.sleep(1)
+                            print("4")
+                            time.sleep(1)
+                            print("3")
+                            time.sleep(1)
+                            print("2")
+                            time.sleep(1)
+                            print("1")
+                            RANDOM = random.randint(0, 1)
+                            if RANDOM == 1:
+                                print("you succefully cooked your fish")
+                                ICOOKFISH += IFISH
+                                IFISH -= IFISH
+                                break
+                            else:
+                                print("You burnt your fish! It has been lost")
+                                IFISH -= IFISH
+                                break
+                        case "yes":
+                            print("You cook your fish")
+                            time.sleep(1)
+                            print("5")
+                            time.sleep(1)
+                            print("4")
+                            time.sleep(1)
+                            print("3")
+                            time.sleep(1)
+                            print("2")
+                            time.sleep(1)
+                            print("1")
+                            RANDOM = random.randint(0, 1)
+                            if RANDOM == 1:
+                                print("you succefully cooked your fish")
+                                ICOOKFISH += IFISH
+                                IFISH -= IFISH
+                                break
+                            else:
+                                print("You burnt your fish! It has been lost")
+                                IFISH -= IFISH
+                                break
+                        
+                        case "n":
+                            print("Back to your travels adventurer!")
+                            break
+                        
+                        case "no":
+                            print("back to your travels adventurer!")
+                            break
+                        
+                        case "help":
+                            print("type 'yes' (y) or 'no' (n) to choose\nif you want to cook your fish")
+                            print("Note: while cooking there is a chance that you burn the fish.\nAll burnt fish will be lost and removed from your inventory")
+
+                        case _:
+                            print("invalid input")
+                            break
+                else:
+                    print("You do not have any fish to cook\nBack to your travels adventurer!")
+                    break
 
         case "town":
             print("--------------------------------------------------")
