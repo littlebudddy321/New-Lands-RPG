@@ -222,7 +222,8 @@ while True:  # start of game
                         print("Type the name of the resource you desire to collect\nActions:\n"
                               "Scan - Scans area for resources\nStop - leaves mining mode\nAll - Type (all) followed by"
                               " the name of the resource\nto automatically collect resources\n"
-                              "Note: There is a 1 second delay between auto collect.")
+                              "Note: There is a 1 second delay between auto collect."
+                              "\nstop - Makes you stop mining")
                         print("========================================")
                     case "stop":
                         print("you stop mining")
@@ -452,11 +453,11 @@ while True:  # start of game
                     print("you have full health no need to eat")
             else: 
                 print("you do not have any cooked fish")
-                
+
         case "town":
             print("--------------------------------------------------")
             print("The town is", DISTANCE, "Miles away, do you still wish to travel?\nY or N")
-            USER = input("Choice:").lower()
+            USER = input("Choice: ").lower()
             match USER:
                 case "y":
                     print("Traveling to the town")
@@ -505,10 +506,20 @@ while True:  # start of game
                                                     print("select 'Deposite' to deposite money")
                                             except ValueError:
                                                 print("This is not a number try again")
+                                       
                                         case "coins":
                                             print("coins:", ICOINS)
+                                        
                                         case "leave":
                                             break
+                                        
+                                        case "help":
+                                            print("==================================================")
+                                            print("(bank) help menu:")
+                                            print("deposite - type this to deposite a certain amount of coins")
+                                            print("withdrawl - type this to withdrawl a certain amount of coins")
+                                            print("coins - type this to see the amount of coins you currently\nhold in your inventory")
+                                            print("leave - type this to leave the bank")
 
                                         case _:
                                             print("Invalid Input")
