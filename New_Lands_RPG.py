@@ -29,7 +29,7 @@ IIRON = 0
 IGOLD = 0
 ICOPPER = 0
 IFISH = 0
-ICOOKEDFISH = 0
+ICOOKFISH = 0
 ICOINS = 0
 
 # bank
@@ -48,7 +48,7 @@ while True:  # start of game
     Choose_action = input("choose action: ").lower()
 
     match Choose_action:  # Choose your action
-
+        
         case "scan":  # scan area for resources
             print("========================================")
             print("Resource list")
@@ -59,7 +59,7 @@ while True:  # start of game
 
         case "mine":  # select collection mode
             while True:
-                mine = input("choose resource: ")
+                mine = input("choose resource: ").lower()
                 match mine:
                     case "all wood":
                         while True:
@@ -330,6 +330,19 @@ while True:  # start of game
                                 break
                             else:
                                 print("you successfully run away dodging the bandits attack.")
+
+                        case "eat":
+                            if ICOOKFISH >= 1:
+                                if PLAYER <= 10:
+                                    print("========================================")
+                                    print("you ate a fish,\n+1 Health")
+                                    ICOOKFISH -= 1
+                                    PLAYER += 1
+                                else:
+                                    print("you have full health no need to eat")
+                            else: 
+                                print("you do not have any cooked fish")
+
                         case "health":
                             print("Player Health: ", PLAYER)
                             print("Bandit Health: ", BANDIT)
@@ -339,7 +352,8 @@ while True:  # start of game
                             print("(fighting) actions list:")
                             print("- Attack: (Attack the enemy: 50/50 chance to hit the bandit)",
                                   "\n- block: (skips your turn: 50/50 chance to get hit and gives bandit 1 extra AP)",
-                                  "\n- run: (Run away: 70/30 chance to get hit)")
+                                  "\n- run: (Run away: 70/30 chance to get hit)"
+                                  "\n- eat: you eat a cooked fish and restore 1 health")
                             print("--------------------------------------------------")
                             print("you have a total of 5 action points, for every action\none AP (action point) will "
                                   "be removed. choose your\n actions well.\n if you miss the bandit has a chance to "
@@ -361,7 +375,7 @@ while True:  # start of game
         case "cook":
             while True:
                 if IFISH >= 1:
-                    USER = input("would you like to cook your fish?\nY or N: ")
+                    USER = input("would you like to cook your fish?\nY or N: ").lower()
                     match USER:
                         case "y":
                             print("You cook your fish")
@@ -426,7 +440,19 @@ while True:  # start of game
                 else:
                     print("You do not have any fish to cook\nBack to your travels adventurer!")
                     break
-
+        
+        case "eat":
+            if ICOOKFISH >= 1:
+                if PLAYER <= 10:
+                    print("========================================")
+                    print("you ate a fish,\n+1 Health")
+                    ICOOKFISH -= 1
+                    PLAYER += 1
+                else:
+                    print("you have full health no need to eat")
+            else: 
+                print("you do not have any cooked fish")
+                
         case "town":
             print("--------------------------------------------------")
             print("The town is", DISTANCE, "Miles away, do you still wish to travel?\nY or N")
@@ -452,7 +478,7 @@ while True:  # start of game
                                     match USER:
                                         case "deposite":
                                             try:
-                                                USER = int(input("Deposite ammount:"))
+                                                USER = int(input("Deposite ammount:").lower())
                                                 if USER >= 0:
                                                     if USER <= ICOINS:
                                                         BCOINS += USER
@@ -467,7 +493,7 @@ while True:  # start of game
 
                                         case "withdrawl":
                                             try:
-                                                USER = int(input("Withdrawl ammount:"))
+                                                USER = int(input("Withdrawl ammount:").lower())
                                                 if USER >= 0:
                                                     if USER <= BCOINS:
                                                         BCOINS -= USER
@@ -494,7 +520,7 @@ while True:  # start of game
                                 print("choosing an item will sell all of that \nin your inventory\nType 'help' for help")
                                 print("========================================")
                                 while True:
-                                    USER = input("what items would you like to sell?\nchoose item:")
+                                    USER = input("what items would you like to sell?\nchoose item:").lower()
                                     match USER:
 
                                         case "sell bag":

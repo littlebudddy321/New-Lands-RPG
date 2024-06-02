@@ -9,5 +9,5 @@ Planned Features:
 - Make selling items quicker or in larger quantities - COMPLETE
 - make bank only hold Coins - COMPLETED
 - Make a story. Why are you there, what are you doing?
-- Make fish cookable
+- Make fish cookable - COMPLETE
 - Make it so eating fish heals player health
