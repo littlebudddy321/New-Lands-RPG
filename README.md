@@ -11,3 +11,5 @@ Planned Features:
 - Make a story. Why are you there, what are you doing? - IN PROGRESS
 - Make fish cookable - COMPLETE
 - Make it so eating fish heals player health - COMPLETE
+
+bugs:
