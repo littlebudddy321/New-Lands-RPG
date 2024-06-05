@@ -223,9 +223,9 @@ while True:  # start of game
                               "Scan - Scans area for resources\nStop - leaves mining mode\nAll - Type (all) followed by"
                               " the name of the resource\nto automatically collect resources\n"
                               "Note: There is a 1 second delay between auto collect."
-                              "\nstop - Makes you stop mining")
+                              "\nleave - Makes you stop mining")
                         print("========================================")
-                    case "stop":
+                    case "leave":
                         print("you stop mining")
                         break
 
