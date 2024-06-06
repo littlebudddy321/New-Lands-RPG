@@ -12,12 +12,16 @@ PLAYER = 10
 BANDIT = 10
 
 # first starting area
-Wood = random.randint(0, 10)
-Stone = random.randint(0, 10)
-Iron = random.randint(0, 10)
-Gold = random.randint(0, 1)
-Copper = random.randint(0, 10)
-Fish = random.randint(0, 10)
+def WORLDGENERATION():
+    global Wood, Stone, Iron, Gold, Copper, Fish
+    Wood = random.randint(0, 10)
+    Stone = random.randint(0, 10)
+    Iron = random.randint(0, 10)
+    Gold = random.randint(0, 1)
+    Copper = random.randint(0, 10)
+    Fish = random.randint(0, 10)
+
+WORLDGENERATION.__call__()
 
 # world
 DISTANCE = random.randint(5, 10)
@@ -307,6 +311,7 @@ while True:  # start of game
                     if BANDIT <= 0:
                         print("you successfully killed the bandit!\nYou continue your travels.")
                         BANDIT += 10
+
                         break
                     if PLAYER <= 0:
                         print("YOU DIED!!!")
@@ -387,12 +392,7 @@ while True:  # start of game
             else:
                 print("========================================")
                 print("you travel to the next sector")
-                Wood = random.randint(0, 10)
-                Stone = random.randint(0, 10)
-                Iron = random.randint(0, 10)
-                Gold = random.randint(0, 1)
-                Copper = random.randint(0, 10)
-                Fish = random.randint(0, 10)
+                WORLDGENERATION.__call__()
        
         case "cook":
             while True:
@@ -411,8 +411,8 @@ while True:  # start of game
                             print("2")
                             time.sleep(1)
                             print("1")
-                            RANDOM = random.randint(1, 1)
-                            if RANDOM == 1:
+                            RANDOM = random.randint(1, 10)
+                            if RANDOM >= 4:
                                 print("you succefully cooked your fish")
                                 ICOOKFISH += IFISH
                                 IFISH -= IFISH
@@ -423,26 +423,22 @@ while True:  # start of game
                                 break
                         case "yes":
                             print("You cook your fish")
-                            time.sleep(1)
-                            print("5")
-                            time.sleep(1)
-                            print("4")
-                            time.sleep(1)
-                            print("3")
-                            time.sleep(1)
-                            print("2")
-                            time.sleep(1)
-                            print("1")
-                            RANDOM = random.randint(0, 1)
-                            if RANDOM == 1:
-                                print("you succefully cooked your fish")
-                                ICOOKFISH += IFISH
-                                IFISH -= IFISH
-                                break
-                            else:
-                                print("You burnt your fish! It has been lost")
-                                IFISH -= IFISH
-                                break
+                            COUNT = 5
+                            while True:
+                                if COUNT >= 1:
+                                    COUNT -= 1
+                                    print(COUNT)
+                                else:
+                                    RANDOM = random.randint(0, 1)
+                                    if RANDOM == 1:
+                                        print("you succefully cooked your fish")
+                                        ICOOKFISH += IFISH
+                                        IFISH -= IFISH
+                                        break
+                                    else:
+                                        print("You burnt your fish! It has been lost")
+                                        IFISH -= IFISH
+                                        break
                         
                         case "n":
                             print("Back to your travels adventurer!")
