@@ -32,6 +32,26 @@ IFISH = 0
 ICOOKFISH = 0
 ICOINS = 0
 
+
+def BAGCHECK():
+    global SELLBAGCHECK
+    SELLBAGCHECK = 0
+
+    if IWOOD >= 1:
+        SELLBAGCHECK += 1
+
+    if ISTONE >= 1:
+        SELLBAGCHECK += 1
+
+    if IIRON >= 1:
+        SELLBAGCHECK += 1
+
+    if IGOLD >= 1:
+        SELLBAGCHECK += 1
+
+    if ICOPPER >= 1:
+        SELLBAGCHECK += 1
+
 # bank
 BCOINS = 0
 
@@ -209,10 +229,10 @@ while True:  # start of game
 
                     case "bag":  # check inventory
                         print("========================================")
-                        print("Inventory")
+                        print("Inventory:")
                         print("----------------------------------------")
-                        print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD,
-                              "\nCopper", ICOPPER, "\nFish", IFISH)
+                        print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD, "\nCopper", ICOPPER, "\nFish",
+                            IFISH,"\nCooked fish", ICOOKFISH, "\nCoins", ICOINS)
                         print("----------------------------------------")
 
                     case "help":
@@ -253,11 +273,12 @@ while True:  # start of game
 
     match Choose_action:  # continuation of choose you action
         case "bag":  # check inventory
+            BAGCHECK.__call__()
             print("========================================")
             print("Inventory:")
             print("----------------------------------------")
             print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD, "\nCopper", ICOPPER, "\nFish",
-                  IFISH, "\nCoins", ICOINS)
+                  IFISH,"\nCooked fish", ICOOKFISH, "\nCoins", ICOINS)
             print("----------------------------------------")
 
         case "help":  # prints list of available commands
@@ -390,7 +411,7 @@ while True:  # start of game
                             print("2")
                             time.sleep(1)
                             print("1")
-                            RANDOM = random.randint(0, 1)
+                            RANDOM = random.randint(1, 1)
                             if RANDOM == 1:
                                 print("you succefully cooked your fish")
                                 ICOOKFISH += IFISH
@@ -443,16 +464,19 @@ while True:  # start of game
                     break
         
         case "eat":
-            if ICOOKFISH >= 1:
-                if PLAYER <= 10:
-                    print("========================================")
-                    print("you ate a fish,\n+1 Health")
-                    ICOOKFISH -= 1
-                    PLAYER += 1
-                else:
-                    print("you have full health no need to eat")
-            else: 
-                print("you do not have any cooked fish")
+            if PLAYER >= 9:
+                print("you have full health no need to eat")
+            else:
+                if ICOOKFISH >= 1:
+                    if PLAYER <= 10:
+                        print("========================================")
+                        print("you ate a fish,\n+1 Health")
+                        ICOOKFISH -= 1
+                        PLAYER += 1
+                    else:
+                        print("you have full health no need to eat")
+                else: 
+                    print("you do not have any cooked fish")
 
         case "town":
             print("--------------------------------------------------")
@@ -531,25 +555,35 @@ while True:  # start of game
                                 print("choosing an item will sell all of that \nin your inventory\nType 'help' for help")
                                 print("========================================")
                                 while True:
+                                    
                                     USER = input("what items would you like to sell?\nchoose item:").lower()
                                     match USER:
 
                                         case "sell bag":
-                                            print("10 second wait:")
-                                            time.sleep(10)
-                                            print("you sell you entire bag (except fish)")
-                                            ICOINS += IWOOD
-                                            ICOINS += ISTONE
-                                            ICOINS += IIRON
-                                            ICOINS += IGOLD
-                                            ICOIND += ICOPPER
-                                            IWOOD -= IWOOD
-                                            ISTONE -= ISTONE
-                                            IIRON -= IIRON
-                                            IGOLD -= IGOLD
-                                            ICOPPER -= ICOPPER
-                                            IFISH -= IFISH
-                                            ICOINS -= ICOINS
+                                            BAGCHECK.__call__()
+                                            if SELLBAGCHECK >= 1:
+                                                time.sleep(10)
+                                                print("10 second wait:")
+                                                print("you sell you entire bag (except fish)")
+                                                print("========================================")
+                                                ICOINS += IWOOD
+                                                ICOINS += ISTONE
+                                                ICOINS += IIRON
+                                                ICOINS += IGOLD
+                                                ICOINS += ICOPPER
+                                                IWOOD -= IWOOD
+                                                ISTONE -= ISTONE
+                                                IIRON -= IIRON
+                                                IGOLD -= IGOLD
+                                                ICOPPER -= ICOPPER
+                                                IFISH -= IFISH
+                                                ICOINS -= ICOINS
+                                                BAGCHECK.__call__()                                                
+
+                                            else: 
+                                                print("You do not have anything in your bag...")
+                                                print("========================================")                                                
+
 
                                         case "Wood":
                                             print("You sold all your wood")
@@ -557,7 +591,7 @@ while True:  # start of game
                                             print("Pat amount:", IWOOD)
                                             ICOINS += IWOOD
                                             IWOOD -= IWOOD
-
+ 
 
                                         case "Stone":
                                             print("You sold all your wood")
@@ -599,10 +633,10 @@ while True:  # start of game
 
                                         case "bag":  # check inventory
                                             print("========================================")
-                                            print("Inventory")
+                                            print("Inventory:")
                                             print("----------------------------------------")
-                                            print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD,
-                                                  "\nCopper", ICOPPER, "\nFish", IFISH)
+                                            print("Wood", IWOOD, "\nStone", ISTONE, "\nIron", IIRON, "\nGold", IGOLD, "\nCopper", ICOPPER, "\nFish",
+                                                IFISH,"\nCooked fish", ICOOKFISH, "\nCoins", ICOINS)
                                             print("----------------------------------------")
 
                                         case "leave":
@@ -614,7 +648,7 @@ while True:  # start of game
                                             print("invalid action please try again")
                             case "scan":
                                 print(
-                                    "Store list:\n- General store:sell all the items you could ever want to. \n- "
+                                    "Store list:\n- General store: sell all the items you could ever want to. \n- "
                                     "Bank: store gold, coins, and more at the local bank accessible from any other "
                                     "town.")
                             case "leave":
@@ -642,3 +676,6 @@ while True:  # start of game
 
         case "quit":
             print("quit")
+
+        case "p4639r":
+            print(PLAYER, BANDIT, Wood, Stone, Iron, Gold, Copper, Fish, IWOOD, ISTONE, IGOLD, ICOPPER, IFISH, ICOOKFISH, ICOINS, DISTANCE)
